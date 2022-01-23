@@ -10,8 +10,29 @@
 
 <body>
 
+<?php
+include("conexion.php");
+//misma conexion en 2 pasos
+//$conexion=$base->query("select * from DATOS_USUARIOS");
+//$registros=$conexion->fetchAll(PDO::FETCH_OBJ);
+$registros=$base->query("select * from DATOS_USUARIOS")->fetchAll(PDO::FETCH_OBJ);
+IF(isset($_POST["cr"])){
+  $nombre=$_POST["Nom"];
+  $apellido=$_POST["Ape"];
+  $direccion=$_POST["Dir"];
+  $sql= "insert into datos_usuarios (NOMBRE, APELLIDO, DIRECCION) values (:nom, :ape, :dir)";
+  $resultado=$base->prepare($sql);
+  $resultado->execute(array(":nom"=>$nombre, ":ape"=>$apellido, ":dir"=>$direccion));
+  header("location:index.php");
+}
+
+
+?>
+
 
 <h1>CRUD<span class="subtitulo">Create Read Update Delete</span></h1>
+
+<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
 
   <table width="50%" border="0" align="center">
     <tr >
@@ -24,16 +45,30 @@
       <td class="sin">&nbsp;</td>
     </tr> 
    
-		
+		<?php
+
+      foreach($registros as $persona):?>
+
    	<tr>
-      <td> </td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><?php echo $persona->ID?> </td>
+      <td><?php echo $persona->NOMBRE?></td>
+      <td><?php echo $persona->APELLIDO?></td>
+      <td><?php echo $persona->DIRECCION?></td>
+
+      
  
-      <td class="bot"><input type='button' name='del' id='del' value='Borrar'></td>
-      <td class='bot'><input type='button' name='up' id='up' value='Actualizar'></a></td>
-    </tr>       
+      <td class="bot"><a href="borrar.php?ID=<?php echo $persona->ID?>"><input type='button' name='del' id='del' value='Borrar'></a></td>
+      <td class='bot'><a href="editar.php?ID=<?php echo $persona->ID?> & NOMBRE=<?php echo $persona->NOMBRE?> & APELLIDO=<?php echo $persona->APELLIDO?> & DIRECCION=<?php echo $persona->DIRECCION?>"><input type='button' name='up' id='up' value='Actualizar'></a></td>
+    </tr>  
+    
+    
+    <?php
+      endforeach;  
+    
+    ?>
+
+
+
 	<tr>
 	<td></td>
       <td><input type='text' name='Nom' size='10' class='centrado'></td>
@@ -41,6 +76,7 @@
       <td><input type='text' name=' Dir' size='10' class='centrado'></td>
       <td class='bot'><input type='submit' name='cr' id='cr' value='Insertar'></td></tr>    
   </table>
+  </form>
 
 <p>&nbsp;</p>
 </body>
