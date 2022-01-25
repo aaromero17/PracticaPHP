@@ -18,7 +18,7 @@
 
         <?php
             foreach ($matrizproducto as $registro){
-                echo "<tr><td>". $registro["NOMBRE"]."</td></tr>";
+                echo "<tr><td>". $registro["NOMBREARTICULO"]."</td></tr>";
             }
 
 

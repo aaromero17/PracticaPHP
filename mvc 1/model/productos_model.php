@@ -17,7 +17,7 @@ class productos_model{
        $consulta= $this->db->query("select * from datos_usuarios");
 
         while($filas=$consulta->fetch(PDO::FETCH_ASSOC)){
-            $this->producto[]=$filas;
+            $this->productos[]=$filas;
         }
         return $this->productos;
 

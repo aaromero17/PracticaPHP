@@ -13,11 +13,12 @@ class productos_model{
     }
 
     public function getProductos(){
-       // $consulta= $this->db->query("select * from artículos");
-       $consulta= $this->db->query("select * from datos_usuarios");
+        $consulta= $this->db->query("select * from artículos");
+       
 
         while($filas=$consulta->fetch(PDO::FETCH_ASSOC)){
-            $this->producto[]=$filas;
+            $this->productos[]=$filas;
+           
         }
         return $this->productos;
 
@@ -25,5 +26,6 @@ class productos_model{
     }
     
 }
+
 
 ?>
