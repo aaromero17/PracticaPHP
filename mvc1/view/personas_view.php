@@ -6,20 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        h1{
-
-            text-align: center;
+        td{
+            border: 1px dotted #FF0000;
         }
 
     </style>
 </head>
 <body>
-    <H1>MODELO VISTA CONTROLADOR</H1>
-    <br>
-    <?php
-        require_once("controller/productos_controller.php");
+    <table>
+        <tr><td>NOMBRE DEL USUARIO: </td></tr>
 
-        
-    ?>
+        <?php
+            foreach ($matrizpersona as $registro){
+                echo "<tr><td>". $registro["NOMBRE"]."</td></tr>";
+            }
+
+
+        ?>
+    </table>
+
+   
+
 </body>
 </html>

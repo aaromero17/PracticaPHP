@@ -1,25 +1,25 @@
 <?php
 
-class productos_model{
+class personas_model{
     private $db;
-    private $productos;
+    private $personas;
    
     public function __construct(){
         require_once ("model/conexion.php");
         $this->db=Conectar::conexion();
-        $this->productos=array();
+        $this->personas=array();
 
         
     }
 
-    public function getProductos(){
-       // $consulta= $this->db->query("select * from artículos");
+    public function getPersonas(){
+       
        $consulta= $this->db->query("select * from datos_usuarios");
 
         while($filas=$consulta->fetch(PDO::FETCH_ASSOC)){
-            $this->productos[]=$filas;
+            $this->personas[]=$filas;
         }
-        return $this->productos;
+        return $this->personas;
 
 
     }
