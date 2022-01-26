@@ -5,16 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        h1{
-
-            text-align: center;
-        }
+    <link rel="stylesheet" type="text/css" href="ccs/hoja.css">
 
     </style>
 </head>
 <body>
-    <H1>MODELO VISTA CONTROLADOR</H1>
+    
     <br>
     <?php
         require_once("controller/personas_controller.php");

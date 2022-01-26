@@ -28,7 +28,6 @@ $resultado->execute(array());
 $numFilas=$resultado->rowCount();//cuenta el nro de registros
 $totalPaginas=ceil($numFilas/$intervalo);//total de paginas
 
-
 //---------------------------------------------------------------------------------------------------------
 
 
@@ -36,15 +35,7 @@ $totalPaginas=ceil($numFilas/$intervalo);//total de paginas
 
 
 $registros=$base->query("select * from DATOS_USUARIOS limit $empezarDesde,$intervalo")->fetchAll(PDO::FETCH_OBJ);
-IF(isset($_POST["cr"])){
-  $nombre=$_POST["Nom"];
-  $apellido=$_POST["Ape"];
-  $direccion=$_POST["Dir"];
-  $sql= "insert into datos_usuarios (NOMBRE, APELLIDO, DIRECCION) values (:nom, :ape, :dir)";
-  $resultado=$base->prepare($sql);
-  $resultado->execute(array(":nom"=>$nombre, ":ape"=>$apellido, ":dir"=>$direccion));
-  header("location:index.php");
-}
+
 
 
 ?>
