@@ -19,7 +19,7 @@
         $manejoObjeto = new manejoObjetos($miconexion);
         $tablaBlog=$manejoObjeto->getContenidoPorFecha();
         if(empty($tablaBlog)){
-            echo "No hay entradas de Blog aun";
+            echo "No hay entradas de Blog aun <br><br>";
 
         }else{
             foreach ($tablaBlog as $valor){
