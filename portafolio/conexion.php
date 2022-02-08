@@ -22,7 +22,12 @@
         public function ejecutar($sql){
             $this->conexion->exec($sql);
             return $this->conexion->lastInsertId();
+        }
 
+        public function consulta($sql){
+            $sentencia=$this->conexion->prepare($sql);
+            $sentencia->execute();
+            return$sentencia->fetchAll();
 
         }
 
